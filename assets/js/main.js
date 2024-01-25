@@ -3,7 +3,7 @@ import pokeapi from './poke-api.js'
 // the fetch (url) used to fetch data from the url, returns a promise, which is an object that represents the eventual completion or failure of an asynchronous operation. an asynchronous operation is one that allows the computer to “move on” to other tasks while waiting for the asynchronous operation to complete. therefore, a promise is a placeholder for a value that we do not yet have.
 
 // function to convert the pokemon data to html
-function pokemonToHtml(pokemon) {
+function pokemonToList(pokemon) {
   return `
     <li class="pokemon">
       <span class="number">#001</span>
@@ -23,12 +23,23 @@ function pokemonToHtml(pokemon) {
 
 const pokemonList = document.getElementById('pokemonList')
 
-pokeapi.getPokemons().then((pokemons) => { // gets the results array and loops through it to get each pokemon object
+pokeapi.getPokemons().then((pokemons = []) => { // gets the results array and loops through it to get each pokemon object
 
-  for (let i = 0; i < pokemons.length; i++) {
-    const pokemon = pokemons[i];
-    pokemonList.innerHTML += pokemonToHtml(pokemon);
+  // map is a method that creates a new array with the results of calling a provided function on every element in the calling array
+  const newList = pokemons.map((pokemon) => { // pokemons is the array created from the results array
+    return pokemon.name
+  })
 
-  }
+  console.log(newList)
+
+
+
+  // const listItems = []
+
+  // for (let i = 0; i < pokemons.length; i++) {
+  //   const pokemon = pokemons[i];
+  //   listItems.push(pokemonToList(pokemon))
+  // }
+
 
 })

@@ -26,20 +26,5 @@ const pokemonList = document.getElementById('pokemonList')
 pokeapi.getPokemons().then((pokemons = []) => { // gets the results array and loops through it to get each pokemon object
 
   // map is a method that creates a new array with the results of calling a provided function on every element in the calling array
-  const newList = pokemons.map((pokemon) => { // pokemons is the array created from the results array
-    return pokemon.name
-  })
-
-  console.log(newList)
-
-
-
-  // const listItems = []
-
-  // for (let i = 0; i < pokemons.length; i++) {
-  //   const pokemon = pokemons[i];
-  //   listItems.push(pokemonToList(pokemon))
-  // }
-
-
+  pokemonList.innerHTML = pokemons.map(pokemonToList).join('')
 })
